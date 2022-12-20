@@ -7,7 +7,7 @@ node {
       def path = './'
       def verbose = false
       withSonarQubeEnv('SonarQube'){
-    sh("${scannerHome}/bin/sonar-scanner -Dsonar.branch.name=${branch} -Dsonar.projectKey=${projectName} -Dsonar.sources=${path} -Dsonar.java.binaries=${path} -Dsonar.verbose=${verbose}")
+    sh("${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=${projectName} -Dsonar.sources=${path} -Dsonar.java.binaries=${path} -Dsonar.verbose=${verbose}")
     }
     }
   } catch (e) {
