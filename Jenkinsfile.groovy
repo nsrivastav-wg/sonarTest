@@ -1,7 +1,10 @@
 node {
   try {
     stage('Static Analysis') {
-      sh("curl -u ${sonar-token}: -d 'projectKey=$projectName&gateName=Lowest-QG' -X POST http://3.108.228.16:9000/api/qualitygates/select")
+      withCredentials([string(credentialsId: 'sonar-token', variable: 'user-token')]) {
+        sh("curl -u ${user-token}: -d 'projectKey=$projectName&gateName=Lowest-QG' -X POST http://3.108.228.16:9000/api/qualitygates/select")
+      }
+      
       def scannerHome = tool 'SonarQube'
       def branch = 'dev'
       def path = './'
