@@ -1,6 +1,6 @@
 node {
   try {
-    stage('Deploy') {
+    stage('Static Analysis') {
       sh("curl -u squ_f1e4ff083b9e22a1bcf7b83d3fb8f471784136bd: -d 'projectKey=$projectName&gateName=Lowest-QG' -X POST http://3.108.228.16:9000/api/qualitygates/select")
       def scannerHome = tool 'SonarQube'
       def branch = 'dev'
